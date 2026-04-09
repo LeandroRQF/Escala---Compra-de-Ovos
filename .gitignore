@@ -1,0 +1,22 @@
+# Ambiente
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Build
+dist/
+build/
+*.spec
+
+# Logs
+log_ovos.json
+
+# IDE
+.vscode/
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db
