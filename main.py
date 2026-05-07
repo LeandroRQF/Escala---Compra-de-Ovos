@@ -3,6 +3,7 @@ import json      # Manipulação de JSON (log e payload)
 import os        # Manipulação de arquivos (verificar se log existe)
 from datetime import datetime, timedelta  # Trabalhar com datas
 import holidays  # Biblioteca para verificar feriados
+import holidays.countries
 from dotenv import load_dotenv
 import sys
 
