@@ -4,7 +4,7 @@ import os        # Manipulação de arquivos (verificar se log existe)
 from datetime import datetime, timedelta  # Trabalhar com datas
 import holidays  # Biblioteca para verificar feriados
 from dotenv import load_dotenv
-import os
+import sys
 
 load_dotenv()
 
@@ -19,7 +19,9 @@ WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 # Lista de pessoas participantes da escala
 PESSOAS = [
     "Anna Martins",
-    "Rafael Silva",
+    "Karen Sousa",
+    "Rafael Silva",    
+    "Alex Gonçalves",
     "Lucas Bueno",
     "Roberta Casella",
     "Rafael Freitas",
@@ -31,8 +33,16 @@ PESSOAS = [
 ]
 
 # Arquivo onde será salvo o histórico de envios (evita duplicidade)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# IDENTIFICAÇÃO DINÂMICA DO DIRETÓRIO (Compatível com .py e .exe)
+if getattr(sys, 'frozen', False):
+    # Se for um executável (.exe), usa o diretório do executável
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    # Se for script .py comum, usa o diretório do arquivo atual
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 ARQUIVO_LOG = os.path.join(BASE_DIR, "log_ovos.json")
+
 
 # Se True → imprime no console | False → envia para o Teams
 # Data fixa para simulação (só usada se MODO_TESTE_DATA = True)
