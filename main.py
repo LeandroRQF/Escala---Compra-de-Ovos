@@ -160,9 +160,9 @@ def gerar_pares(pessoas):
 
     return pares
 
-def obter_par(data_ref):
+def obter_par_(data_ref):
     """
-    Define qual par será responsável baseado na semana do ano.
+    Define o par baseado no tempo decorrido desde uma data inicial fixa.
     """
 
     pares = gerar_pares(PESSOAS)
@@ -172,6 +172,24 @@ def obter_par(data_ref):
 
     # Retorna o par baseado na semana
     return pares[semana % len(pares)]
+
+
+def obter_par(data_ref):
+    """
+    Define o par baseado no tempo decorrido desde uma data inicial fixa.
+    """
+    pares = gerar_pares(PESSOAS)
+    
+    # DATA DE INÍCIO DA ESCALA (Um segunda-feira que você queira que seja o Par 0)
+    # Exemplo: 05 de Janeiro de 2026
+    data_base = datetime(2026, 1, 5).date()
+    
+    # Calcula quantas semanas se passaram desde a data base
+    dias_passados = (data_ref - data_base).days
+    semanas_passadas = dias_passados // 7
+    
+    # Retorna o par baseado na progressão real das semanas
+    return pares[semanas_passadas % len(pares)]
 
 # =========================
 # CÁLCULO DO INÍCIO SEMANA
